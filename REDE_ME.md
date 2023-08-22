@@ -1,5 +1,80 @@
 [comment]: <> (створити алгоритм для створеня меню)
 
+* [Створення API за допомогою Django та Django Rest Framework](#створення-api-за-допомогою-django-та-django-rest-framework)
+* [Інтродукції](#інтродукції)
+    - [Для кого ця книга?](#для-кого-ця-книга?)
+    - [Як читати цю книгу?](#як-читати-цю-книгу?)
+* [Налаштування, моделі та адміністрування](#налаштування,-моделі-та-адміністрування)
+    - [Створення проекту](#створення-проекту)
+    - [Налаштування бази даних](#налаштування-бази-даних)
+    - [Створення моделей](#створення-моделей)
+    - [Активація моделей](#активація-моделей)
+* [Простий API із чистим Django](#простий-api-із-чистим-django)
+    - [Кінцеві точки та URL-адреси](#кінцеві-точки-та-url-адреси)
+    - [Підключення URL-адрес до представлень даних (views)](#підключення-url-адрес-до-представлень-даних-(views))
+* [Написання поглядів](#написання-поглядів)
+    - [Використання API](#використання-api)
+    - [Навіщо потрібні DRF?](#навіщо-потрібні-drf?)
+* [Серіалізація та десеріалізація даних](#серіалізація-та-десеріалізація-даних)
+    - [Серіалізація та десеріалізація](#серіалізація-та-десеріалізація)
+    - [Створення серіалізаторів](#створення-серіалізаторів)
+    - [Детально про `PollSerializer`](#детально-про-`pollserializer`)
+    - [Використання `PollSerializer`](#використання-`pollserializer`)
+* [Перегляди та загальні подання (Views and Generic Views)](#перегляди-та-загальні-подання-(views-and-generic-views))
+    - [Створення представлень за допомогою `APIView`](#створення-представлень-за-допомогою-`apiview`)
+    - [Використання узагальнених подань DRF для спрощення коду](#використання-узагальнених-подань-drf-для-спрощення-коду)
+    - [Більш загальні погляди](#більш-загальні-погляди)
+    - [Наступні кроки](#наступні-кроки)
+* [Більше переглядів і переглядів](#більше-переглядів-і-переглядів)
+    - [Краща структура URL-адреси](#краща-структура-url-адреси)
+    - [Зміна поглядів](#зміна-поглядів)
+    - [Представляємо `Viewsets` і маршрутизатори](#представляємо-`viewsets`-і-маршрутизатори)
+    - [Вибір базового класу для використання](#вибір-базового-класу-для-використання)
+    - [Наступні кроки](#наступні-кроки-1)
+* [Управління доступом](#управління-доступом)
+    - [Створення користувача](#створення-користувача)
+    - [Налаштування схеми автентифікації](#налаштування-схеми-автентифікації)
+    - [API входу](#api-входу)
+    - [Точний контроль доступу](#точний-контроль-доступу)
+    - [Наступні кроки:](#наступні-кроки:)
+* [Тестування та безперервне інтегрування](#тестування-та-безперервне-інтегрування)
+    - [Створення тестових запитів](#створення-тестових-запитів)
+    - [Тестування API з автентифікацією](#тестування-api-з-автентифікацією)
+    - [Використання `APIClient`](#використання-`apiclient`)
+    - [`.post` та create](#`.post`-та-create)
+    - [Постійна інтеграція з CircleCI](#постійна-інтеграція-з-circleci)
+    - [Налаштування CircleCI](#налаштування-circleci)
+    - [Файл конфігурації кола запису](#файл-конфігурації-кола-запису)
+* [Тестування та використання API з Postman](#тестування-та-використання-api-з-postman)
+    - [Створення HTTP запиту](#створення-http-запиту)
+    - [Відповідь](#відповідь)
+    - [Колекції](#колекції)
+    - [Аутентифікація](#аутентифікація)
+* [API документування (з Swagger тощо)](#api-документування-(з-swagger-тощо))
+    - [Додавання пишної документації](#додавання-пишної-документації)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-1)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-2)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-3)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-4)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-5)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-6)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-7)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-8)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-9)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-10)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-11)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-12)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-13)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-14)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-15)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-16)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-17)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-18)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-19)
+        - [Використання coreapi для документації](#використання-coreapi-для-документації-20)
+    - [Використання coreapi для документації](#використання-coreapi-для-документації-21)
+
 # Створення API за допомогою Django та Django Rest Framework
 
 Створення API за допомогою Django та DRF займає місце, де закінчуються навчальні посібники з Django. У підручниках
@@ -243,6 +318,8 @@ urlpatterns = [
     path("polls/<int:pk>/", polls_detail, name="polls_detail")
 ]
 ```
+
+---
 
 # Написання поглядів
 
@@ -1253,6 +1330,7 @@ class ChoiceList(generics.ListCreateAPIView):
 
 У наступному розділі ми розглянемо додавання тестів для нашого API та серіалізаторів. Ми також розглянемо, як
 використовувати `flake8` і запустити наші тести в середовищі CI.
+---
 
 # Тестування та безперервне інтегрування
 
@@ -1264,5 +1342,511 @@ DRF надає кілька важливих класів, які спрощую
 - `APIRequestFactory`: це схоже на RequestFactory Django. Це дозволяє створювати запити за допомогою будь-якого
   http-методу, який потім можна передавати будь-якому методу перегляду та порівнювати відповіді.
 - `APIClient`: подібний до `клієнта` Django. Ви можете ОТРИМАТИ або ОПУБЛІКУВАТИ URL-адресу та перевірити відповіді.
-- `APITestCase`: схоже на `TestCase` Django. Більшість ваших тестів буде підкласом цього. Тепер давайте напишемо тестові
-  приклади для нашої програми для опитування.
+- `APITestCase`: схоже на `TestCase` Django. Більшість ваших тестів буде підкласом цього.
+
+Тепер давайте напишемо тестові приклади для нашої програми для опитування.
+
+## Створення тестових запитів
+
+Django's 'Requestfactory' має можливість створювати екземпляри запитів, які дозволяють нам окремо тестувати функції
+перегляду. Django Rest Framework має клас під назвою 'APIRequestFactory', який розширює стандарт Django
+'RequestFactory'. Цей клас містить майже всі дієслова http, такі як .get(), .post(), .put(), .patch() тощо.
+
+Синтаксис запиту на публікацію:
+
+```python
+factory = APIRequestFactory()
+request = factory.post(uri, post
+data)
+```
+
+Додамо тест для списку опитувань.
+
+```python
+from rest_framework.test import APITestCase
+from rest_framework.test import APIRequestFactory
+
+from polls import apiviews
+
+
+class TestPoll(APITestCase):
+    def setUp(self):
+        self.factory = APIRequestFactory()
+        self.view = apiviews.PollViewSet.as_view({'get': 'list'})
+        self.uri = '/polls/'
+
+    def test_list(self):
+        request = self.factory.get(self.uri)
+        response = self.view(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+```
+
+У наведених вище рядках коду ми намагаємося отримати доступ до подання PollList. Ми стверджуємо, що код відповіді HTTP
+дорівнює 200.
+
+Тепер запустіть тестову команду.
+
+```shell
+python manage.py test
+```
+
+І він відобразить наведене нижче повідомлення.
+
+```shell
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+F
+======================================================================
+FAIL: test_list (polls.tests.TestPoll)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shabda/repos/building-api-django/pollsapi/polls/tests.py", line 19, in test_list
+    .format(response.status_code))
+AssertionError: 401 != 200 : Expected Response Code 200, received 401 instead.
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+```
+
+Ой! Наш тест провалився. Це сталося тому, що перегляд недоступний без автентифікації. Тому нам потрібно створити
+користувача та протестувати представлення після автентифікації.
+
+## Тестування API з автентифікацією
+
+Щоб перевірити apis із автентифікацією, потрібно створити тестового користувача, щоб ми могли надсилати запити в
+контексті цього користувача. Давайте створимо тестового користувача. Змініть свої тести на
+
+```python
+from django.contrib.auth import get_user_model
+from rest_framework.authtoken.models import Token
+
+
+# ...
+
+class TestPoll(APITestCase):
+    def setUp(self):
+        # ...
+        self.user = self.setup_user()
+        self.token = Token.objects.create(user=self.user)
+        self.token.save()
+
+    @staticmethod
+    def setup_user():
+        User = get_user_model()
+        return User.objects.create_user(
+            'test',
+            email='testuser@test.com',
+            password='test'
+        )
+
+    def test_list(self):
+        request = self.factory.get(self.uri,
+                                   HTTP_AUTHORIZATION='Token {}'.format(self.token.key))
+        request.user = self.user
+        response = self.view(request)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+```
+
+Тепер запустіть тестову команду.
+
+```shell
+python manage.py test
+```
+
+Ви повинні отримати цю відповідь
+
+```shell
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.119s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+## Використання `APIClient`
+
+Той самий тест можна написати за допомогою `APIClient`. У ньому є `get`, `.post` і family. На відміну від створення
+запитів спочатку, за допомогою `APIClient` ви можете ОТРИМАТИ/GET або ОПУБЛІКУВАТИ/POST URL-адресу безпосередньо та
+отримати відповідь.
+
+Додайте такий тест:
+
+```python
+from rest_framework.test import APIClient
+
+
+# ...
+
+
+class TestPoll(APITestCase):
+    def setUp(self):
+        self.client = APIClient()
+        # ...
+
+    # ...
+    def test_list2(self):
+        response = self.client.get(self.uri)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+```
+
+Let us test it now.
+
+```shell
+python manage.py test polls.tests.TestPoll
+
+
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+F
+======================================================================
+FAIL: test_list2 (polls.tests.TestPoll)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shabda/repos/building-api-django/pollsapi/polls/tests.py", line 37, in test_list2
+    .format(response.status_code))
+AssertionError: 401 != 200 : Expected Response Code 200, received 401 instead.
+
+----------------------------------------------------------------------
+Ran 1 test in 0.136s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+```
+
+Ми спостерігаємо той самий збій, який ми бачили в тесті з `APIRequestFactory`. Ви можете увійти в `APIClient`,
+викликавши `APIClient.login`. Давайте оновимо тест.
+
+```python
+class TestPoll(APITestCase):
+    # ...
+
+    def test_list2(self):
+        self.client.login(username="test", password="test")
+        response = self.client.get(self.uri)
+        self.assertEqual(response.status_code, 200,
+                         'Expected Response Code 200, received {0} instead.'
+                         .format(response.status_code))
+```
+
+```shell
+python manage.py test polls.tests.TestPoll
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.260s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+Вуаля! Тест успішно пройшов.
+
+## `.post` та create
+
+Тепер ми знаємо, як протестувати наші API GET. Цього разу ми можемо використовувати метод `APIClient` з `.post`.
+
+Давайте спробуємо створити нове опитування, надіславши параметри «питання» та «created_by», які потрібні в методі POST.
+Функція тесту виглядає наступним чином.
+
+```python
+class TestPoll(APITestCase):
+
+    # ...
+    def test_create(self):
+        self.client.login(username="test", password="test")
+        params = {
+            "question": "How are you?",
+            "created_by": 1
+        }
+        response = self.client.post(self.uri, params)
+        self.assertEqual(response.status_code, 201,
+                         'Expected Response Code 201, received {0} instead.'
+                         .format(response.status_code))
+```
+
+Ми стверджуємо, що http-код 201, якщо тест пройшов успішно. Давайте запустимо тести.
+
+```shell
+python manage.py test polls.tests.TestPoll.test_create
+
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.267s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+Час святкувати з API :)
+
+## Постійна інтеграція з CircleCI
+
+У нас є тести, але ми також хочемо, щоб вони запускалися під час кожного коміту. Якщо ви використовуєте Github, CircleCI
+надає дуже добре інтегровану службу для виконання ваших тестів. Ми будемо використовувати Circleci. v2
+
+Ми можемо налаштувати нашу програму на використання Circle CI, додавши файл із назвою `.circleci/config.yml`, який є
+текстовим файлом YAML (формат серіалізації даних, який читається людиною). Він автоматично визначає, коли було зроблено
+фіксацію та відправлено в репозиторій Github, який використовує CircleCI, і кожного разу, коли це станеться, він спробує
+створити проект і запустить тести. Розробник повідомляється про невдалу чи успішну збірку.
+
+## Налаштування CircleCI
+
+- Вхід: щоб розпочати роботу з Circle CI, ми можемо ввійти за допомогою нашого облікового запису github на Circleci.com.
+- Активуйте вебхук Github: після завершення процесу реєстрації нам потрібно ввімкнути сервісний хук на сторінці профілю
+  github.
+- Додайте .circle/config.yml: ми повинні додати файл yml до проекту.
+
+## Файл конфігурації кола запису
+
+Для того, щоб Circle CI створив наш проект, нам потрібно трохи розповісти системі про нього. нам потрібно буде додати
+файл із назвою `.circleci/config.yml` до кореня нашого сховища. Нам також потрібно створити
+файл `pollsapi/requirements.txt`, щоб визначити наші залежності.
+
+Додайте це до файлу `pollsapi/requirements.txt`
+
+```text
+Django==2.0.3
+djangorestframework==3.7.7
+```
+
+А потім додайте це до `.circleci/config.yml`
+
+```yaml
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/python:3.6.1
+
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pollsapi/requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r pollsapi/requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            cd pollsapi
+            python manage.py test
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+```
+
+Нижче наведено важливі ключові слова, які використовуються під час написання файлу circleci config.yml.
+
+- `image`: визначає базове зображення, включаючи мову та версію для використання
+- `run`: вказує команду, яка буде виконана для налаштування середовища та запуску
+  тестів. `pip install -r pollsapi/requirements.txt` налаштовує середовище, а `pip install -r pollsapi/requirements.txt`
+
+якщо все пройшло успішно, ви повинні побачити зелену галочку
+
+![](src/circleci.png)
+
+Вітаємо, у вас працюють тести в середовищі CI.
+
+Відтепер щоразу, коли ми надсилаємо наш код до нашого репозиторію, для нього буде створено нову збірку та запущено
+тести.
+
+Ми підійшли до кінця першої частини нашої книги. Ви можете прочитати додаток, який розповідає про деякі інструменти
+документації та інструменти використання API. Ідіть вперед і створюйте чудові програми та API.
+
+---
+
+# Тестування та використання API з Postman
+
+У цьому розділі ми дізнаємося, як використовувати програму Postman для тестування наших API.
+
+Postman можна встановити з сайту [Postman](https://www.postman.com/) . Це універсальний інструмент для роботи з API.
+
+У цих книгах ви будете створювати та використовувати API. Ми побачимо, як ми можемо використовувати Postman для цього.
+
+## Створення HTTP запиту
+
+Postman досить інтуїтивно зрозумілий, але зображення нижче має полегшити розуміння програми.
+
+![](src/postman.png)
+
+Є 4 ключові елементи для створення HTTP-запиту.
+
+1. **URL**: Це вказує на яку URL-адресу потрібно зробити запит. Іншими словами, де знаходиться наша кінцева точка API.
+2. **Метод**: Кожна кінцева точка API має метод, який служить її меті. Методами, наприклад, можуть бути GET для
+   отримання деяких даних, POST для створення або оновлення, DELETE для видалення запису.
+3. **Заголовки**: Заголовки надають необхідну інформацію про запит чи відповідь або про об’єкт, надісланий у тілі. Іноді
+   ми також використовуємо заголовки автентифікації, щоб отримати доступ до кінцевої точки API.
+4. **Тіло**: Тіло запиту – це місце, куди ми надсилаємо об’єкт. Об'єкт, який може знадобитися для послуги.
+
+## Відповідь
+
+Відповідь доступна в нижньому розділі, зазвичай у форматі JSON, але також може відрізнятися залежно від служби API.
+
+## Колекції
+
+Ми можемо зберігати всі відносні кінцеві точки API у колекціях. У нашому прикладі ми можемо зберегти всі кінцеві точки,
+пов’язані з опитуваннями, як колекцію або всі кінцеві точки, пов’язані з користувачами, як іншу колекцію. Таким чином
+організовано всі API.
+
+## Аутентифікація
+
+Postman також підтримує кілька механізмів автентифікації, таких як Basic Auth, Digest Auth і Oauth1. Це дозволяє нам
+використовувати ці методи автентифікації для API.
+
+---
+
+# API документування (з Swagger тощо)
+
+У цьому розділі ми побачимо, як задокументувати наш API.
+
+Коли ви створюєте свій API, вам потрібно буде задокументувати API для співпраці з іншими людьми. У більшості компаній і
+команд розробник, який використовує API, відрізняється від того, хто їх створює. Документація API та інструменти для
+співпраці стають ще важливішими в такому середовищі.
+
+Swagger — це інструмент, який використовується для розуміння можливостей сервісу без доступу до вихідного коду,
+документації або перевірки мережевого трафіку. Простіше кажучи, за допомогою swagger ви можете побачити, які кінцеві
+точки API доступні для веб-додатку. Ви можете використовувати swagger для тестування запитів і відповідей кінцевих точок
+API.
+
+DRF поставляється з власним інструментом, coreapi, для документування та взаємодії з API.
+
+Ми будемо використовувати coreapi і swagger для документування нашого API.
+
+## Додавання пишної документації
+
+Встановіть django-rest-swagger
+
+```shell
+pip install django-rest-swagger
+```
+
+Оновіть свій `settings.py`
+
+```python
+INSTALLED_APPS = [
+    # ...
+    'polls',
+    'rest_framework_swagger',
+]
+```
+
+Додайте пихатості до своїх URL-адрес.
+
+```python
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Polls API')
+
+# ...
+urlpatterns = [
+    # ...
+    path(r'swagger-docs/', schema_view),
+]
+```
+
+Перейдіть до */swagger-docs/* . І ваші пишні документи готові у всій своїй красі.
+
+![](src/swagger.png)
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+## Використання coreapi для документації
+
+### Використання coreapi для документації
+
+## Використання coreapi для документації
+
+Встановіть coreapi
+
+```shell
+pip install coreapi
+```
+
+Додайте URL-адреси coreapi до своїх URL-адрес.
+
+```python
+from rest_framework.documentation import include_docs_urls
+
+# ...
+
+urlpatterns = [
+    # ...
+    path(r'docs/', include_docs_urls(title='Polls API')),
+]
+```
+
+І ваші документи coreapi готові у всій своїй красі.
+
+![](src/coreapi.png)
