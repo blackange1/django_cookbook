@@ -15,13 +15,18 @@ class Menu(object):
         string = string[:len(string) - 1]
         name = string
         level = 0  # 1-6
-        string = string.lower().replace(' ', '-')
         for ch in string:
             if ch != '#':
                 break
             level += 1
         name = name[level + 1:]
+        string = string.lower()
+        string = string.replace(' ', '-')
         string = string[level + 1:]
+        # for ch in set('!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~ \t\n\r\x0b\x0c'):
+        for ch in set('!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~'):
+            string = string.replace(ch, '')
+
         # last_id = ''
         index = 0
         count = 1
@@ -85,6 +90,8 @@ class Menu(object):
 
 menu = Menu(CURRENT_PATH.joinpath(FILE_NAME))
 menu.read_file()
+menu.print()
+
 # is_open_code = False
 # with open(CURRENT_PATH.joinpath(FILE_NAME)) as file:
 #     for line in file.readlines():
@@ -93,5 +100,3 @@ menu.read_file()
 #         if '#' in line[0] and not is_open_code:
 #             # print(line)
 #             menu.add(line)
-
-menu.print()
